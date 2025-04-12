@@ -233,7 +233,7 @@ jobs:
     - name: Upload Kernel ZIP to GoFile
       id: upload_gofile
       run: |
-        ./upload_gofile.sh ${{ steps.kernel.outputs.kernel-folder }}/${{ github.event.inputs.CODENAME }}-${{ steps.build_date.outputs.build_date }}-${{ env.BUILD_TIME_SUFFIX }}.zip > gofile_link.txt
+        ./upload_gofile.sh ${{ steps.kernel.outputs.kernel-folder }}/${{ github.event.inputs.CODENAME }}-${{ steps.build_date.outputs.build_date }}-${{ env.BUILD_TIME_SUFFIX }}.zip | tee gofile_link.txt
         FILE_URL=$(cat gofile_link.txt)
         echo "FILE_URL=${FILE_URL}" >> $GITHUB_ENV
 
